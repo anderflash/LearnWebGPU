@@ -106,8 +106,8 @@ queue.writeBuffer(indexBuffer, 0, indexData.data(), bufferDesc.size);
 // Create index buffer
 // (we reuse the bufferDesc initialized for the vertexBuffer)
 bufferDesc.size = indexData.size() * sizeof(uint16_t);
-bufferDesc.usage = BufferUsage::CopyDst | BufferUsage::Index;
-WGPUBuffer indexBuffer = wgpuDeviceCreateBuffer(device, bufferDesc);
+bufferDesc.usage = WGPUBufferUsage_CopyDst | WGPUBufferUsage_Index;
+WGPUBuffer indexBuffer = wgpuDeviceCreateBuffer(device, &bufferDesc);
 
 wgpuQueueWriteBuffer(queue, indexBuffer, 0, indexData.data(), bufferDesc.size);
 ```
